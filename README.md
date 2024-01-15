@@ -16,9 +16,9 @@ $ ls
 goodreads_interactions.csv  img  README.md
 ```
 
-Recall that the `$` symbol is called the command prompt and indicates that everything after this symbol is a *terminal command*.
-(Terminal commands are also sometimes called *shell commands*.)
-The lines that do not start with a `$` are the output from running the terminal commands.
+Recall that the `$` symbol is called the command prompt and indicates that everything after this symbol is a *shell command*.
+(Shell commands are also sometimes called *terminal commands*.)
+The lines that do not start with a `$` are the output from running the shell commands.
 Sometimes, the output of a command is "uninteresting", in which case the output is not shown.
 (For example, the `git clone` command above is likely to have a lot of output that is not shown.)
 This is a standard practice when writing documentation.
@@ -59,7 +59,7 @@ The `pd.read_csv` function loads the csv file into a pandas [`DataFrame`](https:
 The pandas `DataFrame` is a python implementation of the [R data frame](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/data.frame);
 it is a standard representation for tabular data like you might find in an excel spreadsheet.
 
-We can easily calculate the size of our dataset using the standard `len` command:
+We can calculate the size of our dataset using the built-in `len` function.
 ```
 >>> len(df)
 9999
@@ -97,7 +97,7 @@ We can see that this CSV file has 5 columns:
 We will now look at two interesting queries that we might want to run on this dataset.
 
 The first is the "count distinct" query, where we want to count the total number of distinct entries in a particular column.
-We can calculate the total number of distinct `user_id`s by using the `.nunique()` method like so:
+In pandas, we can calculate the total number of distinct `user_id`s by using the `.nunique()` method like so:
 ```
 >>> df['user_id'].nunique()
 15
@@ -106,8 +106,17 @@ We can calculate the total number of distinct `user_id`s by using the `.nunique(
 > **Exercise:**
 >
 > Write a command that counts the total number distinct values in the `rating` column.
+>
+> **Note:**
+>
+> There will be several exercise problems like this one throughout the lab.
+> These exercises are designed to help you check your own understanding of the material,
+> and you do not have to turn in your answers.
+> Nevertheless, you should not move on to the next portion of the lab until you understand how to complete the exercise.
+> I recommend you work with a partner to complete these exercises.
 
-The second interesting query we'll consider is the "group count" query, where we want to count the total number of times each of these distinct values appears.
+The second interesting query we'll consider is the "group count" query,
+where we want to count the total number of times each of these distinct values appears.
 For example, to see the total number of books each user has interacted with, we can run the command
 ```
 >>> df.groupby('user_id').size()
@@ -137,22 +146,23 @@ There are many more things we can do with a pandas `DataFrame`,
 but before we explore further,
 let's load the full dataset.
 
-<!--
-> **Recall:**
->
-> The path above is called an *absolute path* because it starts with a lerading `/` character.
-> The path to our smaller dataset (`goodreads_interactions.csv`) is called a *relative path* because it does not start with a leading `/`.
-> Absolute paths always refer to the same file no matter what your current working directory is.
--->
-
 The full dataset is stored in the `/data-fast/goodreads/` folder of the lambda server in a file called `goodreads_interactions.csv.gz`.
-(The `.gz` extension means the file has been compressed using the [gzip algorithm](https://en.wikipedia.org/wiki/Gzip).
-Compressing large datasets is standard practice to save disk space.)
+The `.gz` extension means the file has been compressed using the [gzip algorithm](https://en.wikipedia.org/wiki/Gzip).
+Compressing large datasets is standard practice to save disk space,
+and pandas is able to automatically detect this compression and load the dataset for us.
 Load the file into python with the command
 ```
 >>> df = pd.read_csv('/data-fast/goodreads/goodreads_interactions.csv.gz')
 ```
-Notice that pandas can load gzip compressed files without any special processing.
+
+> **Recall:**
+>
+> The path used in the command above is called an *absolute path* because it starts with a leading `/` character.
+> The path we used to access our smaller dataset (`goodreads_interactions.csv`) is called a *relative path* because it does not start with a leading `/`.
+> Absolute paths always refer to the same file no matter what your current working directory is.
+> The relative path refers to whatever file is in your current folder,
+> and this file will change if you use the `cd` command to change your current working folder.
+
 After a minute or so, you should get a large [python traceback](https://realpython.com/python-traceback/) that ends with 
 ```
 MemoryError
@@ -329,21 +339,19 @@ You should get that there are over 228 million data points.
 > Each line of this file contains a single user review.
 > Combine the `zcat` and `wc` commands to count the total number of user reviews.
 
-<!--
-In summary, the POSIX shell can be awkward to use because it's old,
-but it is extremely powerful and flexible for large scale data analysis.
--->
-
 One disadvantage of the POSIX shell is that complicated queries (like the "count distinct" and "group count" queries we did above in pandas) can be difficult or impossible to write.
-Normally we combine the shell with other tools (like SQL) to accomplish these tasks.
+Normally we combine the shell with other tools (like python or SQL) to accomplish these tasks.
+In a later homework for this class, we will see how to write the count distinct and group by queries in the shell.
+But now we turn to reviewing SQL.
 
-### Part 1c: SQL
+## Part 3: SQL
 
 We will now turn our attention to SQL and how to combine SQL with the shell.
 As with the shell, there are many "dialects" of SQL.
 For this lab, we will use SQLite.
 SQLite is the most widely deployed piece of software in the world, [with over 1 trillion (1e12) active databases in use](https://sqlite.org/mostdeployed.html).
-Most phones contain 100s of SQLite databases, and even many kitchen appliances contain SQLite databases.
+Most phones contain 100s of SQLite databases,
+and even many kitchen appliances contain SQLite databases.
 One of the main reasons for its popularity is that SQLite is easy to combine with other programming languages like the POSIX shell.
 
 <!--
