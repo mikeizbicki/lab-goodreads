@@ -86,13 +86,13 @@ Next, we can manually inspect the data by just printing the `df` object directly
 ```
 We can see that this CSV file has 5 columns:
 
-    - The `user_id` and `book_id` columns contain unique identifiers for each user and book on the website.
-    
-    - `is_read` is set to `0` if the user has not read the book, and set to `1` if they have.
+- The `user_id` and `book_id` columns contain unique identifiers for each user and book on the website.
 
-    - `rating` is set to `0` if the user has not rated the book, otherwise it is the number of stars between 1-5 that the user assigned the book.
+- `is_read` is set to `0` if the user has not read the book, and set to `1` if they have.
 
-    - `is_reviewed` is set to `0` if the user has not left a detailed text review of the book, and `1` if they have.
+- `rating` is set to `0` if the user has not rated the book, otherwise it is the number of stars between 1-5 that the user assigned the book.
+
+- `is_reviewed` is set to `0` if the user has not left a detailed text review of the book, and `1` if they have.
 
 We will now look at two interesting queries that we might want to run on this dataset.
 
@@ -296,11 +296,18 @@ and the command should complete instantaneously.
 These tools are all designed to be extremely efficient.
 (They had to be in order to work on 1970s computers!)
 
-> **Note:**
+The [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) is that all programs "should do one thing well" and "work together".
+Using pipes to combine programs like this is therefore an extremely common practice.
+
+> **Historical Aside:**
 >
-> The R programming language has two pipe-like operators `|>` and `%>%`.
+> The Unix philosophy has been widely adopted by modern programming languages in various forms.
+> For example, the R programming language has two pipe-like operators `|>` and `%>%`.
 > These operators are inspired by the Unix pipe and have the same *semantics* of connecting the output of one program to the input of another.
 > Unlike Unix pipes, however, R pipes are typically not efficient and so cannot be used on large datasets.
+> The difference between the efficiency of R and Unix pipes is entirely cultural.
+> Unix programs are typically built by computer scientists who care deeply about performance of their code,
+> whereas R programs are normally built by statisticians who have less understanding of how to write efficient code.
 
 In order to count the number of lines in the full dataset, we will pipe the results of the `zcat` command to the `wc -l` command:
 ```
@@ -487,7 +494,7 @@ You can now count the number of rows in the table with the following command:
 sqlite> select count(*) from interactions;
 228648342
 ```
-Notice that this result agrees with bash script results that we wrote earlier.
+Notice that this result ran much faster than our previous `wc -l` command and gives us the same answer.
 
 We can now finally run our more complicated queries on this dataset.
 The following SQLite commands compute the total number of distinct users that have interacted with books,
@@ -509,10 +516,18 @@ sqlite> select rating, count(*) from interactions group by rating;
 | 5      | 35506166  |
 ```
 Each of these commands takes 1-2 minutes for me.
+Some SQL commands are fast by default (like `count(*)`),
+and some are not.
+We will talk in detail throughout this semester about why some commands are fast and some slow,
+and how to speed up these slow commands so that they return results instantly.
+Websites, in particular, need to be able to return results efficiently or they will lose users.
+For example, [Google applies a penalty to a website's ranking if it is slower than 200ms](https://developers.google.com/speed/docs/insights/Server).
 
+<!--
 The main drawback of our SQL commands is that they still take a long time to compute.
 In the remainder of this course, we'll explore techniques for reducing these runtimes.
 By the end of this course, you'll be able to answer these types of queries in milliseconds.
+-->
 
 ## Submission
 
