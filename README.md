@@ -154,7 +154,7 @@ There are many more things we can do with a pandas `DataFrame`,
 but we won't explore those for now.
 Instead, we'll run similar queries on the larger version of this dataset.
 
-### Part 3.b: Loading the Larger Dataset
+### Part 1.b: Loading the Larger Dataset
 
 The full dataset is stored in the `/data-fast/goodreads/` folder of the lambda server in a file called `goodreads_interactions.csv.gz`.
 The `.gz` extension means the file has been compressed using the [gzip algorithm](https://en.wikipedia.org/wiki/Gzip).
