@@ -185,10 +185,15 @@ Your user accounts are allowed to use up to 16GB of memory on the lambda server,
 and so you're encountering this `MemoryError` exception because python is trying to allocate more than 16GB for the data frame.
 
 A fundamental principle of working with big data is that we need algorithms with only $O(1)$ memory usage.
-<!--
-Many computers today have more than 16GB of RAM available,
-and so could load the full `goodreads_interactions.csv.gz` into a pandas data frame.
--->
+
+> **Recall:**
+> Big-O notation is not only for run times!
+> It is a standard shorthand that can be applied to any mathematical function.
+> By saying that an algorithm has $O(1)$ memory usage, we are saying that the algorithm's memory usage is upper bounded by some constant (no matter how large the input data is).
+> I will be using big-O, $\Theta$, and $\Omega$ notation throughout this course to provide asymptotic bounds on a number of functions.
+> You can find the [formal definitions of these functions on wikipedia](https://en.wikipedia.org/wiki/Big_O_notation#Family_of_Bachmann%E2%80%93Landau_notations),
+> and I will provide only very light review of the notation in class.
+
 Later in this class we will be working with datasets that are terabytes or petabytes in size,
 and so this $O(1)$ memory usage requirement will become even more important.
 Unfortunately, pandas is not designed to use constant space memory,
