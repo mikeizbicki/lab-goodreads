@@ -201,9 +201,7 @@ and so this $O(1)$ memory usage requirement will become even more important.
 Unfortunately, pandas is not designed to use constant space memory,
 and so it is not suitable for large scale data analysis problems.
 
-<!--
 <img src=img/pandas-bad1.jpg width=300px />
--->
 
 Python has many other libraries for providing dataframe-like functionality that are more efficient.
 Two popular ones are [dask](https://docs.dask.org/en/stable/) and [polars](https://realpython.com/polars-python/).
