@@ -173,8 +173,10 @@ Load the file into python with the command
 > The relative path refers to whatever file is in your current folder,
 > and this file will change if you use the `cd` command to change your current working folder.
 
-After a minute or so, you should get a large [python traceback](https://realpython.com/python-traceback/) that ends with 
+After a minute or so, you should get a large [python traceback](https://realpython.com/python-traceback/) that looks something like
 ```
+Traceback (most recent call last):
+    ...
 MemoryError
 ```
 Oh no!
@@ -200,7 +202,7 @@ and so it is not suitable for large scale data analysis problems.
 
 Python has many other libraries for providing dataframe-like functionality that are more efficient.
 Two popular ones are [dask](https://docs.dask.org/en/stable/) and [polars](https://realpython.com/polars-python/).
-Unfortunately, they are more awkward to use and have fewer features.
+Unfortunately, they are more awkward to use and have fewer features compared to pandas.
 For this reason, most big data analysis is not done in just python.
 Instead, it is much more common to use the POSIX shell and SQL,
 occasionally combining these tools with python.
