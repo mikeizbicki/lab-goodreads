@@ -186,6 +186,16 @@ and so the process runs out of memory and crashes.
 Your user accounts are allowed to use up to 16GB of memory on the lambda server,
 and so you're encountering this `MemoryError` exception because python is trying to allocate more than 16GB for the data frame.
 
+> **Aside:**
+> Predicting the amount of memory a file will take up is non-obvious.
+> The file you are loading only takes up 1.1GB of disk space.
+> But it is compressed.
+> Uncompressed, it takes up 5GB.
+> But it is stored as text,
+> and pandas/numpy converts that text into IEE754 double precision floating point numbers.
+> That means that a number like `7` which takes up a single byte as text will take up 8 bytes when loaded by pandas.
+> This 1.1GB compressed CSV file expands to about 20GB of memory when loaded into RAM.
+
 A fundamental principle of working with big data is that we need algorithms with only $O(1)$ memory usage.
 
 > **Recall:**
