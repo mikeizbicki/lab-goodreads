@@ -492,7 +492,7 @@ $ sqlite3 goodreads.db 'select count(*) from interactions;'
 ```
 
 We are now ready to load our large, compressed dataset into a SQLite database.
-This will allow us to finally by able to run our "select distinct" and "group count" queries on the full dataset.
+This will allow us to finally be able to run our "select distinct" and "group count" queries on the full dataset.
 
 Like with the `head` and `wc` programs, `sqlite3` does not natively understand compression.
 Therefore, we must combine it with the `zcat` program to access compressed files.
