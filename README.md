@@ -577,4 +577,4 @@ Modify the two `select` queries above in order to calculate:
 
 2. The total number of books that have been reviewed or not reviewed.  (That is, do a "group by" query on the `is_reviewed` column.)
 
-Paste your queries and their results into sakai.
+Paste your queries and their results into canvas.
