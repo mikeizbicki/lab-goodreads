@@ -29,7 +29,7 @@ You should follow along this tutorial by typing these commands into your termina
 For example, if you get different output when running `ls`,
 then something has gone wrong.
 
-We are now ready to start working with python to analyze the `goodreads_interactions.csv` file.
+We are now ready to start working with Python to analyze the `goodreads_interactions.csv` file.
 
 ## Part 1: Python and Pandas
 
