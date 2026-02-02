@@ -113,7 +113,7 @@ In pandas, we can calculate the total number of distinct `user_id`s by using the
 
 > **Exercise:**
 >
-> Write a command that counts the total number distinct values in the `rating` column.
+> Write a command that counts the total number of distinct values in the `rating` column.
 >
 > **Note:**
 >
