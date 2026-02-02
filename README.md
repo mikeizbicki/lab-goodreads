@@ -25,7 +25,7 @@ Sometimes, the output of a command is "uninteresting", in which case the output 
 This is a standard practice when writing documentation.
 You will see it throughout this class in both material that I write and external references.
 
-You should follow along this tutorial by typing these commands into your terminal and verifying that you get similar output.
+You should follow along this tutorial by typing these commands into your terminal and verifying that you get a similar output.
 For example, if you get different output when running `ls`,
 then something has gone wrong.
 
