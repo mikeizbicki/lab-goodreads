@@ -403,7 +403,7 @@ In the shell, run the command
 ```
 $ sqlite3 goodreads.db
 ```
-This creates and opens the file `goodreads.db` as a sql database.
+This creates and opens the file `goodreads.db` as a SQL database.
 You will see output that looks something like
 ```
 SQLite version 3.44.2 2023-11-24 11:41:44
