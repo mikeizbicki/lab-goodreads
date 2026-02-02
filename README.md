@@ -26,7 +26,7 @@ This is a standard practice when writing documentation.
 You will see it throughout this class in both material that I write and external references.
 
 You should follow along this tutorial by typing these commands into your terminal and verifying that you get similar output.
-For example, if you get different output when running `ls`,
+For example, if you get a different output when running `ls`,
 then something has gone wrong.
 
 We are now ready to start working with python to analyze the `goodreads_interactions.csv` file.
