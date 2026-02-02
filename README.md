@@ -1,6 +1,6 @@
 # Goodreads Part I: CSV Files
 
-We will use three main programming languages in this class: python, shell, and sql.
+We will use three main programming languages in this class: Python, Shell, and SQL.
 In this first part of the lab we will do some basic data exploration with each of these languages.
 
 We will use data on user "interactions" from the <https://goodreads.com> website,
